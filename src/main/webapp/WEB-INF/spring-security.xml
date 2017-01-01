@@ -1,0 +1,41 @@
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+	<context:annotation-config />
+	
+	<!-- Security configuration for REST services. -->
+	<security:http pattern="/**" authentication-manager-ref="authenticationManager" 
+		entry-point-ref="restServicesEntryPoint" create-session="stateless" >
+		<security:custom-filter ref="restServicesFilter" before="PRE_AUTH_FILTER" />
+		<security:access-denied-handler ref="RestAuthenticationAccessDeniedHandler"/>
+	</security:http>
+	<!-- Entry point for REST service. -->
+	<bean id="restServicesEntryPoint" class="com.tornado.ecommerce.security.RestAuthenticationEntryPoint" />
+	<!-- Filter for REST services. -->
+	<bean id="restServicesFilter"
+		class="com.tornado.ecommerce.security.RestUsernamePasswordAuthenticationFilter">
+		<property name="postOnly" value="false" />
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationSuccessHandler" ref="restServicesSuccessHandler" />
+	</bean>
+	<!-- A handler for successful REST service authentication. -->
+	<bean id="restServicesSuccessHandler" class="com.tornado.ecommerce.security.RestAuthenticationSuccessHandler" />
+	<bean id="CustomAuthenticationProvider" class="com.tornado.ecommerce.security.CustomAuthenticationProvider" />
+ 
+	<!-- Authentication manager. -->
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider ref="CustomAuthenticationProvider">
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	 <!-- Using Authentication Access Denied handler -->
+    <bean id="RestAuthenticationAccessDeniedHandler"
+        class="com.tornado.ecommerce.security.RestAuthenticationAccessDeniedHandler" />
+
+</beans>
