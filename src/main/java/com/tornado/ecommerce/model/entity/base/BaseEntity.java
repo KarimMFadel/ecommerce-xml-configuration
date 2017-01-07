@@ -41,6 +41,7 @@ public  class BaseEntity implements Serializable{
     private String retiredBy;
 	
 	@Version
+	@Column(name = "version_lock")
 	private Long version;
 	
 	public BaseEntity() {

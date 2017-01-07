@@ -2,6 +2,7 @@ package com.tornado.ecommerce.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -14,7 +15,7 @@ import com.tornado.ecommerce.model.entity.base.BaseEntity;
 public class Subcategory extends BaseEntity {
 
 	@ManyToOne
-	@Column(name = "category_id")
+	@JoinColumn(name = "category_id")
 	Category category;
 	
 	@Column(name = "subcategory_name")

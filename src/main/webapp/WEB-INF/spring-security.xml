@@ -10,10 +10,15 @@
 	<context:annotation-config />
 	
 	<!-- Security configuration for REST services. -->
-	<security:http pattern="/**" authentication-manager-ref="authenticationManager" 
+	<security:http authentication-manager-ref="authenticationManager" 
 		entry-point-ref="restServicesEntryPoint" create-session="stateless" >
+		<security:intercept-url pattern='/tornado/admin/**' access="hasRole('ROLE_ADMIN')" />
+		<!-- <security:intercept-url pattern='/tornado/login/**' access="isAuthenticated()" /> -->
+		<security:intercept-url pattern='/tornado/client/**' access="hasAnyRole('ROLE_USER','ROLE_STORE')" />
+		
 		<security:custom-filter ref="restServicesFilter" before="PRE_AUTH_FILTER" />
 		<security:access-denied-handler ref="RestAuthenticationAccessDeniedHandler"/>
+		<security:csrf disabled="true" />
 	</security:http>
 	<!-- Entry point for REST service. -->
 	<bean id="restServicesEntryPoint" class="com.tornado.ecommerce.security.RestAuthenticationEntryPoint" />

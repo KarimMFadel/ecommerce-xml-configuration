@@ -30,28 +30,36 @@ public abstract class GenericService<T extends BaseEntity, ID extends Serializab
 
 	public List<T> findAll(Iterable<ID> ids){
 		if(ids==null)
-			throw new EcommerceException();
+			throw new EcommerceException("");
 		return genericRepository.findAll(ids);
 	}
 
 
-	public T getOne(ID id) {
+	public T findOne(ID id) {
 		if(id==null)
-			throw new EcommerceException();
+			throw new EcommerceException("");
 		return genericRepository.findOne(id);
 	}
 
 	public T delete(ID id){
 		if(id==null)
-			throw new EcommerceException();
+			throw new EcommerceException("");
 		T deleteEntity = (T) genericRepository.findOne(id);
 		if(deleteEntity==null)
-			throw new EcommerceException();
+			throw new EcommerceException("");
 		genericRepository.delete(deleteEntity);
 		return deleteEntity;
 	}
 	
 	public Long getCountOfRow() {
 		return genericRepository.count();
+	}
+	
+	public T save(T entity) {
+		return genericRepository.save(entity);
+	}
+
+	public T update(T entity) {
+		return genericRepository.save(entity);
 	}
 }
