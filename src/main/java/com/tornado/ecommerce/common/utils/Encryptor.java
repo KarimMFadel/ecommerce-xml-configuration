@@ -100,7 +100,7 @@ public class Encryptor {
 	public static void main(String args[]) {
 
 		User user = new User();
-		// user.setFirstName("karim");
+		user.setFirstName("karim");
 		user.setLoginName("fadel_91");
 		user.setPassword("karim");
 		String encrypted = Encryptor.getInstance().encrypt(user);

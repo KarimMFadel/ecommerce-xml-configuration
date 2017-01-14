@@ -38,7 +38,10 @@ public abstract class GenericService<T extends BaseEntity, ID extends Serializab
 	public T findOne(ID id) {
 		if(id==null)
 			throw new EcommerceException("");
-		return genericRepository.findOne(id);
+		T t = genericRepository.findOne(id);
+		if(t==null)
+			throw new EcommerceException("");
+		return t; 
 	}
 
 	public T delete(ID id){

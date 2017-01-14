@@ -42,5 +42,4 @@
 	 <!-- Using Authentication Access Denied handler -->
     <bean id="RestAuthenticationAccessDeniedHandler"
         class="com.tornado.ecommerce.security.RestAuthenticationAccessDeniedHandler" />
-
 </beans>
