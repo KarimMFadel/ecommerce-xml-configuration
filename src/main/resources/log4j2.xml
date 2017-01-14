@@ -19,7 +19,7 @@
 		<!--Document will print out all the information, the log every time you 
 			run the program will automatically clear, determined by the append property, 
 			this is also very useful, suitable for temporary test -->
-		<File name="log" fileName="log/test.log" append="true">
+		<File name="log" fileName="${baseDir}/log/logger.log" append="true">
 			<PatternLayout
 				pattern="%d{HH:mm:ss.SSS} %-5level  %class{36} %L %M - %msg%xEx%n" />
 		</File>
