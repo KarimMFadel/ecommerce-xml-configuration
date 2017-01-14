@@ -19,5 +19,6 @@ public interface UserService {
     public Long getCountOfRow();
     /*  add method  */
 	public String login(String username, String password);
+	public User findByUsernameAndPassword(String username, String password);
     
 }
