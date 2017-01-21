@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-1">
+		<createTable tableName="ecommerce_category">
+			<column autoIncrement="true" name="recid" type="SERIAL">
+				<constraints primaryKey="true" primaryKeyName="ecommerce_category_pkey" />
+			</column>
+			<column name="version_lock" type="BIGINT" />
+			<column name="created_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="updated_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="retired_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="created_by" type="TEXT" />
+			<column name="updated_by" type="TEXT" />
+			<column name="retired_by" type="TEXT" />
+			<column defaultValueNumeric="0" name="is_retired" type="SMALLINT" />
+			<column name="category_name" type="TEXT" />
+			<column name="description" type="TEXT" />
+			<column name="image" type="TEXT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-2">
+		<createTable tableName="ecommerce_country">
+			<column autoIncrement="true" name="recid" type="SERIAL">
+				<constraints primaryKey="true" primaryKeyName="ecommerce_country_pkey" />
+			</column>
+			<column name="version_lock" type="BIGINT" />
+			<column name="created_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="updated_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="retired_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="created_by" type="TEXT" />
+			<column name="updated_by" type="TEXT" />
+			<column name="retired_by" type="TEXT" />
+			<column defaultValueNumeric="0" name="is_retired" type="SMALLINT" />
+			<column name="country_name" type="TEXT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-3">
+		<createTable tableName="ecommerce_inventory">
+			<column autoIncrement="true" name="recid" type="SERIAL">
+				<constraints primaryKey="true" primaryKeyName="ecommerce_inventory_pkey" />
+			</column>
+			<column name="version_lock" type="BIGINT" />
+			<column name="created_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="updated_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="retired_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="created_by" type="TEXT" />
+			<column name="updated_by" type="TEXT" />
+			<column name="retired_by" type="TEXT" />
+			<column defaultValueNumeric="0" name="is_retired" type="SMALLINT" />
+			<column name="ecommerce_product" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="ecommerce_user" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-4">
+		<createTable tableName="ecommerce_lookup">
+			<column autoIncrement="true" name="recid" type="SERIAL">
+				<constraints primaryKey="true" primaryKeyName="ecommerce_lookup_pkey" />
+			</column>
+			<column name="version_lock" type="BIGINT" />
+			<column name="created_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="updated_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="retired_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="created_by" type="TEXT" />
+			<column name="updated_by" type="TEXT" />
+			<column name="retired_by" type="TEXT" />
+			<column defaultValueNumeric="0" name="is_retired" type="SMALLINT" />
+			<column name="lookup_types_id" type="BIGINT" />
+			<column name="lookup_name" type="TEXT" />
+			<column name="type_name" type="TEXT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-5">
+		<createTable tableName="ecommerce_lookup_types">
+			<column autoIncrement="true" name="recid" type="SERIAL">
+				<constraints primaryKey="true" primaryKeyName="ecommerce_lookup_types_pkey" />
+			</column>
+			<column name="version_lock" type="BIGINT" />
+			<column name="created_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="updated_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="retired_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="created_by" type="TEXT" />
+			<column name="updated_by" type="TEXT" />
+			<column name="retired_by" type="TEXT" />
+			<column defaultValueNumeric="0" name="is_retired" type="SMALLINT" />
+			<column name="type_name" type="TEXT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-6">
+		<createTable tableName="ecommerce_order">
+			<column autoIncrement="true" name="recid" type="SERIAL">
+				<constraints primaryKey="true" primaryKeyName="ecommerce_order_pkey" />
+			</column>
+			<column name="version_lock" type="BIGINT" />
+			<column name="created_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="updated_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="retired_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="created_by" type="TEXT" />
+			<column name="updated_by" type="TEXT" />
+			<column name="retired_by" type="TEXT" />
+			<column defaultValueNumeric="0" name="is_retired" type="SMALLINT" />
+			<column name="user_id" type="BIGINT" />
+			<column name="total_price" type="BIGINT" />
+			<column name="status" type="TEXT" />
+			<column name="num_of_product" type="BIGINT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-7">
+		<createTable tableName="ecommerce_order_details">
+			<column autoIncrement="true" name="recid" type="SERIAL">
+				<constraints primaryKey="true" primaryKeyName="ecommerce_order_details_pkey" />
+			</column>
+			<column name="version_lock" type="BIGINT" />
+			<column name="created_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="updated_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="retired_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="created_by" type="TEXT" />
+			<column name="updated_by" type="TEXT" />
+			<column name="retired_by" type="TEXT" />
+			<column defaultValueNumeric="0" name="is_retired" type="SMALLINT" />
+			<column name="product_id" type="BIGINT" />
+			<column name="order_id" type="BIGINT" />
+			<column name="quantity" type="BIGINT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-8">
+		<createTable tableName="ecommerce_product">
+			<column autoIncrement="true" name="recid" type="SERIAL">
+				<constraints primaryKey="true" primaryKeyName="ecommerce_product_pkey" />
+			</column>
+			<column name="version_lock" type="BIGINT" />
+			<column name="created_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="updated_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="retired_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="created_by" type="TEXT" />
+			<column name="updated_by" type="TEXT" />
+			<column name="retired_by" type="TEXT" />
+			<column defaultValueNumeric="0" name="is_retired" type="SMALLINT" />
+			<column name="subcategory_id" type="BIGINT" />
+			<column name="product_name" type="TEXT" />
+			<column name="short_description" type="TEXT" />
+			<column name="long_description" type="TEXT" />
+			<column name="image" type="TEXT" />
+			<column name="price" type="TEXT" />
+			<column name="manufactory" type="TEXT" />
+			<column name="notes" type="TEXT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-9">
+		<createTable tableName="ecommerce_role">
+			<column autoIncrement="true" name="recid" type="SERIAL">
+				<constraints primaryKey="true" primaryKeyName="ecommerce_role_pkey" />
+			</column>
+			<column name="version_lock" type="BIGINT" />
+			<column name="created_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="updated_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="retired_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="created_by" type="TEXT" />
+			<column name="updated_by" type="TEXT" />
+			<column name="retired_by" type="TEXT" />
+			<column defaultValueNumeric="0" name="is_retired" type="SMALLINT" />
+			<column name="role_name" type="TEXT" />
+			<column name="description" type="TEXT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-10">
+		<createTable tableName="ecommerce_role_ecommerce_user">
+			<column name="ecommerce_role" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="ecommerce_user" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-11">
+		<createTable tableName="ecommerce_subcategory">
+			<column autoIncrement="true" name="recid" type="SERIAL">
+				<constraints primaryKey="true" primaryKeyName="ecommerce_subcategory_pkey" />
+			</column>
+			<column name="version_lock" type="BIGINT" />
+			<column name="created_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="updated_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="retired_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="created_by" type="TEXT" />
+			<column name="updated_by" type="TEXT" />
+			<column name="retired_by" type="TEXT" />
+			<column defaultValueNumeric="0" name="is_retired" type="SMALLINT" />
+			<column name="category_id" type="BIGINT" />
+			<column name="subcategory_name" type="TEXT" />
+			<column name="description" type="TEXT" />
+			<column name="image" type="TEXT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-12">
+		<createTable tableName="ecommerce_user">
+			<column autoIncrement="true" name="recid" type="SERIAL">
+				<constraints primaryKey="true" primaryKeyName="ecommerce_user_pkey" />
+			</column>
+			<column name="version_lock" type="BIGINT" />
+			<column name="created_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="updated_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="retired_at" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="created_by" type="TEXT" />
+			<column name="updated_by" type="TEXT" />
+			<column name="retired_by" type="TEXT" />
+			<column defaultValueNumeric="0" name="is_retired" type="SMALLINT" />
+			<column name="country_id" type="BIGINT" />
+			<column name="salutation" type="TEXT" />
+			<column name="first_name" type="TEXT" />
+			<column name="middle_name" type="TEXT" />
+			<column name="last_name" type="TEXT" />
+			<column name="login_name" type="TEXT" />
+			<column name="password" type="TEXT" />
+			<column name="gender" type="TEXT" />
+			<column name="nationality" type="TEXT" />
+			<column name="address" type="TEXT" />
+			<column name="date_of_birth" type="TIMESTAMP(6) WITHOUT TIME ZONE" />
+			<column name="first_phone" type="TEXT" />
+			<column name="second_phone" type="TEXT" />
+			<column name="first_email" type="TEXT" />
+			<column name="second_email" type="TEXT" />
+			<column name="postal_code" type="TEXT" />
+			<column name="notes" type="TEXT" />
+			<column name="image" type="TEXT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-13">
+		<addPrimaryKey columnNames="ecommerce_role, ecommerce_user"
+			constraintName="ecommerce_role_ecommerce_user_pkey" tableName="ecommerce_role_ecommerce_user" />
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-14">
+		<createIndex indexName="idx_ecommerce_inventory"
+			tableName="ecommerce_inventory">
+			<column name="ecommerce_user" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-15">
+		<createIndex indexName="idx_ecommerce_lookup__lookup_types"
+			tableName="ecommerce_lookup">
+			<column name="lookup_types_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-16">
+		<createIndex indexName="idx_ecommerce_order__user"
+			tableName="ecommerce_order">
+			<column name="user_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-17">
+		<createIndex indexName="idx_ecommerce_order_details__order"
+			tableName="ecommerce_order_details">
+			<column name="order_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-18">
+		<createIndex indexName="idx_ecommerce_order_details__product"
+			tableName="ecommerce_order_details">
+			<column name="product_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-19">
+		<createIndex indexName="idx_ecommerce_product__subcategory"
+			tableName="ecommerce_product">
+			<column name="subcategory_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-20">
+		<createIndex indexName="idx_ecommerce_role_ecommerce_user"
+			tableName="ecommerce_role_ecommerce_user">
+			<column name="ecommerce_user" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-21">
+		<createIndex indexName="idx_ecommerce_subcategory__category"
+			tableName="ecommerce_subcategory">
+			<column name="category_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-22">
+		<createIndex indexName="idx_ecommerce_user__country"
+			tableName="ecommerce_user">
+			<column name="country_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-23">
+		<addForeignKeyConstraint baseColumnNames="ecommerce_product"
+			baseTableName="ecommerce_inventory" constraintName="fk_ecommerce_inventory__ecommerce_product"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="recid"
+			referencedTableName="ecommerce_product" />
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-24">
+		<addForeignKeyConstraint baseColumnNames="ecommerce_user"
+			baseTableName="ecommerce_inventory" constraintName="fk_ecommerce_inventory__ecommerce_user"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="recid"
+			referencedTableName="ecommerce_user" />
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-25">
+		<addForeignKeyConstraint baseColumnNames="lookup_types_id"
+			baseTableName="ecommerce_lookup" constraintName="fk_ecommerce_lookup__lookup_types"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="recid"
+			referencedTableName="ecommerce_lookup_types" />
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-26">
+		<addForeignKeyConstraint baseColumnNames="user_id"
+			baseTableName="ecommerce_order" constraintName="fk_ecommerce_order__user"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="recid"
+			referencedTableName="ecommerce_user" />
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-27">
+		<addForeignKeyConstraint baseColumnNames="order_id"
+			baseTableName="ecommerce_order_details" constraintName="fk_ecommerce_order_details__order"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="recid"
+			referencedTableName="ecommerce_order" />
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-28">
+		<addForeignKeyConstraint baseColumnNames="product_id"
+			baseTableName="ecommerce_order_details" constraintName="fk_ecommerce_order_details__product"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="recid"
+			referencedTableName="ecommerce_product" />
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-29">
+		<addForeignKeyConstraint baseColumnNames="subcategory_id"
+			baseTableName="ecommerce_product" constraintName="fk_ecommerce_product__subcategory"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="recid"
+			referencedTableName="ecommerce_subcategory" />
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-30">
+		<addForeignKeyConstraint baseColumnNames="ecommerce_role"
+			baseTableName="ecommerce_role_ecommerce_user" constraintName="fk_ecommerce_role_ecommerce_user__ecommerce_role"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="recid"
+			referencedTableName="ecommerce_role" />
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-31">
+		<addForeignKeyConstraint baseColumnNames="ecommerce_user"
+			baseTableName="ecommerce_role_ecommerce_user" constraintName="fk_ecommerce_role_ecommerce_user__ecommerce_user"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="recid"
+			referencedTableName="ecommerce_user" />
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-32">
+		<addForeignKeyConstraint baseColumnNames="category_id"
+			baseTableName="ecommerce_subcategory" constraintName="fk_ecommerce_subcategory__category"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="recid"
+			referencedTableName="ecommerce_category" />
+	</changeSet>
+	<changeSet author="ahmed.wagdi (generated)" id="1484770108634-33">
+		<addForeignKeyConstraint baseColumnNames="country_id"
+			baseTableName="ecommerce_user" constraintName="fk_ecommerce_user__country"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="recid"
+			referencedTableName="ecommerce_country" />
+	</changeSet>
+
+</databaseChangeLog>
