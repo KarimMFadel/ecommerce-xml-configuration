@@ -16,6 +16,10 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.tornado.ecommerce.common.exception.EcommerceException;
+import com.tornado.ecommerce.common.utils.Encryptor;
+import com.tornado.ecommerce.model.entity.User;
+
 public class RestUsernamePasswordAuthenticationFilter extends
 		UsernamePasswordAuthenticationFilter {
 
@@ -25,16 +29,13 @@ public class RestUsernamePasswordAuthenticationFilter extends
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request,
 			HttpServletResponse response) throws AuthenticationException {
+		String token = obtainToken(request);
+		User extractUserFromToken = Encryptor.getInstance().decrypt(token);
+		String username = extractUserFromToken.getLoginName();
+		String password = extractUserFromToken.getFirstName();
 
-		String username = obtainUsername(request);
-		String password = obtainPassword(request);
-
-		if (username == null) {
-			username = "";
-		}
-
-		if (password == null) {
-			password = "";
+		if (username == null || password == null) {
+			throw new EcommerceException("token does not correct");
 		}
 
 		username = username.trim();
@@ -48,7 +49,14 @@ public class RestUsernamePasswordAuthenticationFilter extends
 		return this.customAuthenticationProvider.authenticate(authRequest);
 	}
 
-	@Override
+	protected String obtainToken(HttpServletRequest request) {
+		String token = request.getHeader("Token");
+		if(token == null)
+			throw new EcommerceException("token does not exist");
+		return token;
+	}
+
+/*	@Override
 	protected String obtainPassword(HttpServletRequest request) {
 		return request.getHeader("j_password");
 	}
@@ -57,7 +65,7 @@ public class RestUsernamePasswordAuthenticationFilter extends
 	protected String obtainUsername(HttpServletRequest request) {
 		return request.getHeader("j_username");
 	}
-
+*/
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
