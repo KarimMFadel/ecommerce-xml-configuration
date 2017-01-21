@@ -10,12 +10,13 @@
 	<context:annotation-config />
 	
 	<security:http security="none" pattern="/tornado/login/**"/>
+	<security:http security="none" pattern="/tornado/client/**"/>
 	<!-- Security configuration for REST services. -->
 	<security:http authentication-manager-ref="authenticationManager" 
 		entry-point-ref="restServicesEntryPoint" create-session="stateless" >
 		<security:intercept-url pattern='/tornado/admin/**' access="hasRole('ROLE_ADMIN')" />
 		<!-- <security:intercept-url pattern='/tornado/login/**' access="permitAll" />  -->
-		<security:intercept-url pattern='/tornado/client/**' access="hasAnyRole('ROLE_USER','ROLE_STORE')" />
+		<security:intercept-url pattern='/tornado/store/**' access="hasAnyRole('ROLE_USER','ROLE_STORE')" />
 		
 		<security:custom-filter ref="restServicesFilter" before="PRE_AUTH_FILTER" />
 		<security:access-denied-handler ref="RestAuthenticationAccessDeniedHandler"/>
