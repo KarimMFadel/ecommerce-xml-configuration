@@ -1,4 +1,4 @@
-package com.tornado.ecommerce.security;
+package com.tornado.ecommerce.spring.security;
 
 import java.io.IOException;
 

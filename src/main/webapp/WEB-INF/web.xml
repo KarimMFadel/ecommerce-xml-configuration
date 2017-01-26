@@ -2,16 +2,16 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>ecommerce</display-name>
   
-  <context-param>
+ <!--  <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
             /WEB-INF/spring-security.xml
             /WEB-INF/spring-context.xml
             /WEB-INF/dispatcher-servlet.xml
         </param-value>
-  </context-param>
+  </context-param> -->
  
-  <listener>
+ <!--  <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <servlet>
@@ -27,13 +27,13 @@
  	<servlet-name>dispatcher</servlet-name>
     <url-pattern>/*</url-pattern>
   </servlet-mapping>
-
+ -->
   
 <!--   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list> -->
   
-	<filter>
+	<!-- <filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
@@ -41,7 +41,7 @@
 	   <filter-name>springSecurityFilterChain</filter-name>
 	   <url-pattern>/*</url-pattern>
 	</filter-mapping>
-	  
+	  --> 
   <filter>
     <filter-name>CORS</filter-name>
     <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>

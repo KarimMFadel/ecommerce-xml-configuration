@@ -9,6 +9,7 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 	<context:annotation-config />
 	
+	<security:http security="none" pattern="/"/> <!--for ignore welcome page  -->
 	<security:http security="none" pattern="/tornado/login/**"/>
 	<security:http security="none" pattern="/tornado/client/**"/>
 	<!-- Security configuration for REST services. -->
