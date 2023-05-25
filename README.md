@@ -1,1 +1,1 @@
-# trying XML configuraion of Spring  
+# XML configuraion of Spring  
